@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// PROBLEM 1
+// PROBLEM 3
 void intercambiar(int *a, int *b) {
 	int temp = *a;
 	*a = *b;
