@@ -15,14 +15,14 @@ void imprimirArray(int *A, int a) {
 	cout << "\n";
 }
 
-void invertirIterativo(int *A, int a) { // -- Iterativo --
-	int *ptrFinal = A + a - 1;
+void invertirIterativo(int *A, int a) {
+	int* ptrFinal = A + a - 1;
 	for (int i = 0; i < a / 2; i++)
 		intercambiar(A++, ptrFinal--);
 }
 
-void invertirRecursivo(int *A, int a) { // -- Recursivo --
-	int *ptrFinal = A + a - 1;
+void invertirRecursivo(int* A, int a) {
+	int* ptrFinal = A + a - 1;
 	if (a == 0 || a == 1)
 		return;
 	else {

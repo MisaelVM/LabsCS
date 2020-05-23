@@ -48,7 +48,7 @@ void Curso::setNroAlumnos(const int nroAlumnos) { this->nroAlumnos = nroAlumnos;
 /* --- PROBLEM 2 --- */
 class ArregloDeCursos {
 private:
-	Curso* cursos;
+	Curso *cursos;
 	int tam;
 
 	// - Funciones privadas -
@@ -57,16 +57,16 @@ private:
 public:
 	// - Constructores/Destructor -
 	ArregloDeCursos(const Curso cursos[], const int tam);
-	ArregloDeCursos(const ArregloDeCursos& o);
+	ArregloDeCursos(const ArregloDeCursos &o);
 	~ArregloDeCursos();
 
 	// - Funciones -
-	void push_back(const Curso& p);
-	void insert(const int posicion, const Curso& p);
+	void push_back(const Curso &p);
+	void insert(const int posicion, const Curso &p);
 	void remove(const int pos);
 	int getSize() const;
 	void clear();
-
+	
 	// - Imprime los cursos -
 	void print();
 };
@@ -74,7 +74,7 @@ public:
 // -- ARREGLO DE CURSOS --
 // - Funcion privada -
 void ArregloDeCursos::redimensionar(int n) {
-	Curso* temp = new Curso[n];
+	Curso *temp = new Curso[n];
 
 	for (int i = 0; i < n && i < tam; i++)
 		temp[i] = cursos[i];
@@ -92,7 +92,7 @@ ArregloDeCursos::ArregloDeCursos(const Curso cursos[], const int tam) {
 		this->cursos[i] = cursos[i];
 }
 
-ArregloDeCursos::ArregloDeCursos(const ArregloDeCursos& o) {
+ArregloDeCursos::ArregloDeCursos(const ArregloDeCursos &o) {
 	this->tam = o.tam;
 	this->cursos = new Curso[tam];
 	for (int i = 0; i < o.tam; i++)
@@ -102,12 +102,12 @@ ArregloDeCursos::ArregloDeCursos(const ArregloDeCursos& o) {
 ArregloDeCursos::~ArregloDeCursos() { delete[] this->cursos; }
 
 // - Funciones -
-void ArregloDeCursos::push_back(const Curso& p) {
+void ArregloDeCursos::push_back(const Curso &p) {
 	redimensionar(tam + 1);
 	cursos[tam - 1] = p;
 }
 
-void ArregloDeCursos::insert(const int posicion, const Curso& p) {
+void ArregloDeCursos::insert(const int posicion, const Curso &p) {
 	redimensionar(tam + 1);
 	for (int i = tam - 1; i > posicion; i--)
 		cursos[i] = cursos[i - 1];
@@ -153,7 +153,7 @@ int main()
 		c7("Ciudadania e Interculturalidad", "4592866", 20);
 
 	Curso arr[] = { c1, c2, c3, c4, c5 };
-
+	
 	ArregloDeCursos arrCursos(arr, 5);
 	arrCursos.print();
 
