@@ -1,6 +1,6 @@
 #include "Node.h"
 
-// -- CONSTRUCTORES/DESTRUCTOR --
+// -- CONSTRUCTORES --
 Node::Node() {
 	elem = 0;
 	next = nullptr;

@@ -9,7 +9,7 @@ private:
 	Node *next;
 
 public:
-	// -- CONSTRUCTORES/DESTRUCTOR --
+	// -- CONSTRUCTORES --
 	Node();
 	Node(Node &o);
 	Node(int elem);
