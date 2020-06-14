@@ -147,7 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Lab5\LinkedList.cpp" />
+    <ClCompile Include="Lab5\Node.cpp" />
     <ClCompile Include="LabsCS.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Lab5\LinkedList.h" />
+    <ClInclude Include="Lab5\Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

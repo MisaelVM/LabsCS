@@ -19,10 +19,27 @@
     <Filter Include="Lab3">
       <UniqueIdentifier>{4df37be7-5389-4840-b08e-903a0a1959d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lab5">
+      <UniqueIdentifier>{78f93862-dbc8-45df-aa77-e26e38c0677d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LabsCS.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Lab5\Node.cpp">
+      <Filter>Lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab5\LinkedList.cpp">
+      <Filter>Lab5</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Lab5\Node.h">
+      <Filter>Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab5\LinkedList.h">
+      <Filter>Lab5</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
