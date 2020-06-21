@@ -22,6 +22,9 @@
     <Filter Include="Lab5">
       <UniqueIdentifier>{78f93862-dbc8-45df-aa77-e26e38c0677d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lab6">
+      <UniqueIdentifier>{de17f990-e416-4b34-9ee3-b487f21d50c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LabsCS.cpp">
@@ -40,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="Lab5\LinkedList.h">
       <Filter>Lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab6\Node.h">
+      <Filter>Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab6\LinkedList.h">
+      <Filter>Lab6</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

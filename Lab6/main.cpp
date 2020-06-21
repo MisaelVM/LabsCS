@@ -1,6 +1,6 @@
 #include <sstream>
 
-#include "Lab6/LinkedList.h"
+#include "LinkedList.h"
 
 int main()
 {
