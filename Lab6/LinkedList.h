@@ -19,15 +19,6 @@ public:
 	LinkedList(const int element);
 	~LinkedList();
 
-	// Funciones
-	void insert(const T element);
-	void remove(const T element);
-	void print();
-	void printRecursive();
-
-	void poptHead();
-	void popTail();
-
 	// --- ITERATOR PATTERN DECLARATION --- //
 	class Iterator {
 		friend class LinkedList;
@@ -74,14 +65,56 @@ public:
 		}
 	};
 
+	// Funciones
+	Iterator insert(Iterator position, const T &element) {
+		Node<T> *newNode = new Node<T>(element);
+		newNode->setNext(position.nodePointer);
+		if (position.nodePointer == nullptr) {
+			if (tail) tail->setNext(newNode);
+			tail = newNode;
+		}
+		if (position.nodePointer == head)
+			head = newNode;
+		position.nodePointer = newNode;
+		this->size++;
+		return position;
+	}
+	Iterator erase(Iterator position) {
+		Node<T> *deleteNode = position.nodePointer;
+		if (deleteNode == nullptr)
+			pop_back();
+		else {
+			if (position.nodePointer) position.nodePointer = position.nodePointer->getNext();
+			if (deleteNode == head) head = head->getNext();
+			if (deleteNode == tail) tail = position.nodePointer;
+			delete deleteNode;
+			this->size--;
+		}
+		return position;
+	}
+
+	void print();
+	void printRecursive();
+
 	Iterator begin() const { return Iterator(head); }
 	Iterator end() const { return nullptr; }
+
+	T front() const;
+	T back() const;
+
+	bool empty() const;
+	int _size() const;
+
+	void pop_front();
+	void pop_back();
+
+	void clear();
 };
 
 // -- CONSTRUCTORES/DESTRUCTOR --
 template <typename T>
 LinkedList<T>::LinkedList() {
-	size = 0;
+	this->size = 0;
 	head = nullptr;
 	tail = nullptr;
 }
@@ -119,7 +152,82 @@ LinkedList<T>::~LinkedList() {
 
 // Funciones
 template <typename T>
-void LinkedList<T>::insert(const T element) {
+bool LinkedList<T>::empty() const {
+	return this->size == 0;
+}
+
+template <typename T>
+int LinkedList<T>::_size() const {
+	return this->size;
+}
+
+template <typename T>
+T LinkedList<T>::front() const {
+	return head->getElem();
+}
+
+template <typename T>
+T LinkedList<T>::back() const {
+	return tail->getElem();
+}
+
+template <typename T>
+void LinkedList<T>::pop_front() {
+	if (head) erase(head);
+}
+
+template <typename T>
+void LinkedList<T>::pop_back() {
+	if (tail) {
+		if (size == 1) { delete tail; head = nullptr; tail = nullptr; }
+		else {
+			Node<T>* nodePointer = head;
+			while (nodePointer->getNext()->getNext())
+				nodePointer = nodePointer->getNext();
+			this->tail = nodePointer;
+			delete tail->getNext();
+			tail->setNext(nullptr);
+		}
+		this->size--;
+	}
+}
+
+template <typename T>
+void LinkedList<T>::clear() {
+	while (size)
+		pop_front();
+}
+
+template <typename T>
+void LinkedList<T>::print() {
+	Node<T> *nodePointer = head;
+	for (int i = 0; i < this->size; i++) {
+		std::cout << nodePointer->getElem() << " ";
+		nodePointer = nodePointer->getNext();
+	}
+	/*while (nodePointer) {
+		std::cout << nodePointer->getElem() << " ";
+		nodePointer = nodePointer->getNext();
+	}*/
+	std::cout << "\n";
+}
+
+template <typename T>
+void LinkedList<T>::printNodesRecursively(Node<T> *node) {
+	if (node) {
+		std::cout << node->getElem() << " ";
+		printNodesRecursively(node->getNext());
+	}
+}
+
+template <typename T>
+void LinkedList<T>::printRecursive() {
+	printNodesRecursively(head);
+}
+
+#endif
+
+/*void LinkedList<T>::insert(const T element) {
 	Node<T> *newNode = new Node<T>(element);
 	if (!head) { // Lista vacia
 		head = newNode;
@@ -149,9 +257,9 @@ void LinkedList<T>::insert(const T element) {
 	}
 	size++;
 	std::cout << "Inserted the element " << element << " into the Linked List:\n";
-}
+}*/
 
-template <typename T>
+/*template <typename T>
 void LinkedList<T>::remove(const T element) {
 	Node<T> *newNode = new Node<T>(element);
 	if (!head)
@@ -176,47 +284,8 @@ void LinkedList<T>::remove(const T element) {
 			if (nodePointer == tail)
 				tail = previousNode;
 			delete nodePointer;
-			size--;
+			this->size--;
 			std::cout << "Removed the element " << element << " from the Linked List:\n";
 		}
 	}
-}
-
-template <typename T>
-void LinkedList<T>::print() {
-	Node<T> *nodePointer = head;
-	for (int i = 0; i < size; i++) {
-		std::cout << nodePointer->getElem() << " ";
-		nodePointer = nodePointer->getNext();
-	}
-	/*while (nodePointer) {
-		std::cout << nodePointer->getElem() << " ";
-		nodePointer = nodePointer->getNext();
-	}*/
-	std::cout << "\n";
-}
-
-template <typename T>
-void LinkedList<T>::printNodesRecursively(Node<T> *node) {
-	if (node) {
-		std::cout << node->getElem() << " ";
-		printNodesRecursively(node->getNext());
-	}
-}
-
-template <typename T>
-void LinkedList<T>::printRecursive() {
-	printNodesRecursively(head);
-}
-
-template <typename T>
-void LinkedList<T>::poptHead() {
-	if (head) remove(head->getElem());
-}
-
-template <typename T>
-void LinkedList<T>::popTail() {
-	if (tail) remove(tail->getElem());
-}
-
-#endif
+}*/

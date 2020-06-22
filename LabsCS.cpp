@@ -1,72 +1,25 @@
-#include <sstream>
-
 #include "Lab6/LinkedList.h"
 
 int main()
 {
 	LinkedList<int> lnk;
-	std::string stream;
-	int x;
-	enum input { INSERT = 1, REMOVE, PRINT, KILL };
-	int option = 0;
-	while (option != KILL) {
-		system("cls");
-		std::cout << "1)Insert\n";
-		std::cout << "2)Remove\n";
-		std::cout << "3)Print\n";
-		std::cout << "4)Kill\n";
-		std::cin >> option;
-		std::cout << "\n";
-		switch (option) {
-		case INSERT:
-			std::cout << "You are now inserting elements. Press F to quit...\n";
-			std::cout << "\nElement: ";
-			std::cin >> stream;
-			while (stream != "F") {
-				std::stringstream converter(stream);
-				converter >> x;
-				lnk.insert(x);
-				lnk.print();
-				std::cout << "\nElement: ";
-				std::cin >> stream;
-			}
-			break;
-		case REMOVE:
-			std::cout << "You are now removing elements. Press F to quit...\n";
-			std::cout << "\nElement: ";
-			std::cin >> stream;
-			while (stream != "F") {
-				std::stringstream converter(stream);
-				converter >> x;
-				lnk.remove(x);
-				lnk.print();
-				std::cout << "\nElement: ";
-				std::cin >> stream;
-			}
-			break;
-		case PRINT:
-			std::cout << "The list has the following elements:\n";
-			lnk.print();
-			std::cout << "\nPress ENTER to continue...";
-			std::cin.get(); std::cin.get();
-			break;
-		case KILL:
-			break;
-		default:
-			std::cout << "Invalid input\n";
-			std::cout << "\nPress ENTER to continue...";
-			std::cin.get(); std::cin.get();
-			break;
-		}
-	}
-
-	LinkedList<int> lnkC(lnk);
-	lnkC.print();
-
-	std::cout << "\n";
-
+	
+	lnk.insert(lnk.begin(), 7);
+	lnk.insert(lnk.begin(), 4);
+	lnk.insert(lnk.begin(), 9);
 	for (LinkedList<int>::Iterator iter = lnk.begin(); iter != lnk.end(); ++iter)
 		std::cout << *iter << " ";
-
+	std::cout << "\n";
+	lnk.erase(lnk.end());
+	lnk.pop_back();
+	lnk.erase(lnk.end());
+	lnk.pop_front();
+	lnk.erase(lnk.end());
+	lnk.insert(lnk.end(), 7);
+	lnk.insert(lnk.end(), 4);
+	lnk.insert(lnk.end(), 9);
+	for (LinkedList<int>::Iterator iter = lnk.begin(); iter != lnk.end(); ++iter)
+		std::cout << *iter << " ";
+	lnk.clear();
 	return 0;
 }
