@@ -60,7 +60,7 @@ public:
 		}
 
 		// Overloading dereference operator *
-		const T &operator * () const {
+		const T operator * () const {
 			return nodePointer->getElem();
 		}
 	};

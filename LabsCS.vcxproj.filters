@@ -36,6 +36,9 @@
     <ClCompile Include="Lab5\LinkedList.cpp">
       <Filter>Lab5</Filter>
     </ClCompile>
+    <ClCompile Include="Curso.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lab5\Node.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Lab6\LinkedList.h">
       <Filter>Lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="Curso.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
